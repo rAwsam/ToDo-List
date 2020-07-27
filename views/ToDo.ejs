@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>ToDo List</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div class="card">
+        <h2 class="header"><%= kindOfDay %></h2>
+        <div class="card-body">
+        <div class="list-item">
+            <% for(var i=0;i<newPoint.length;i++){ %>
+                <div class="row">
+                    <input type="checkbox">
+                <p class="item"><%= newPoint[i] %></p>
+                </div>
+
+            <% } %>
+        </div>
+
+        <form action="/add" method="post">
+            <input type="text" name="point" placeholder="Add" autocomplete="off" required >
+            <button class="add-btn" type="submit" name="add"><p class="add">+</p></button>
+        </form>
+        </div>
+    </div>
+    <p class="footer">&#64;alphaCoder69</p>
+</body>
+
+</html>
