@@ -1,33 +1,24 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<%- include("header"); -%>
 
-<head>
-    <meta charset="utf-8">
-    <title>ToDo List</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-
-<body>
     <div class="card">
-        <h2 class="header"><%= kindOfDay %></h2>
+        <h2 class="header"><%= title %></h2>
         <div class="card-body">
         <div class="list-item">
-            <% for(var i=0;i<newPoint.length;i++){ %>
+            <% newPoint.forEach((ele)=>{ %>
                 <div class="row">
                     <input type="checkbox">
-                <p class="item"><%= newPoint[i] %></p>
+                <p class="item"><%= ele %></p>
                 </div>
 
-            <% } %>
+            <% }); %>
         </div>
 
-        <form action="/add" method="post">
+        <form action="<%= dataPush %>" method="post" style="margin-top: -20px;">
             <input type="text" name="point" placeholder="Add" autocomplete="off" required >
             <button class="add-btn" type="submit" name="add"><p class="add">+</p></button>
         </form>
         </div>
     </div>
     <p class="footer">&#64;alphaCoder69</p>
-</body>
 
-</html>
+<%- include("footer"); -%>
