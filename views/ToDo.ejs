@@ -1,24 +1,29 @@
 <%- include("header"); -%>
 
-    <div class="card">
-        <h2 class="header"><%= title %></h2>
-        <div class="card-body">
+<div class="card">
+    <h2 class="header"><%= title %></h2>
+    <div class="card-body">
         <div class="list-item">
             <% newPoint.forEach((ele)=>{ %>
+            <form action="/del" method="post">
                 <div class="row">
-                    <input type="checkbox">
-                <p class="item"><%= ele %></p>
+                    <input type="checkbox" name="checkBox" value="<%= ele.id %>" onchange="this.form.submit();">
+                    <p class="item" name="para" value="<%= ele.item %>"><%= ele.item %></p>
                 </div>
+                <input type="hidden" name="listName" value="<%= title %>"></input>
+            </form>
 
             <% }); %>
         </div>
 
-        <form action="<%= dataPush %>" method="post" style="margin-top: -20px;">
-            <input type="text" name="point" placeholder="Add" autocomplete="off" required >
-            <button class="add-btn" type="submit" name="add"><p class="add">+</p></button>
+        <form action="/list" method="post" style="margin-top: -20px;">
+            <input type="text" name="point" placeholder="Add" autocomplete="off" required>
+            <button class="add-btn" type="submit" name="add" value="<%= title %>">
+                <p class="add">+</p>
+            </button>
         </form>
-        </div>
     </div>
-    <p class="footer">&#64;alphaCoder69</p>
+</div>
+<p class="footer">&#64;alphaCoder69</p>
 
 <%- include("footer"); -%>
