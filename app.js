@@ -8,9 +8,6 @@ const date = require(__dirname + "/date.js");
 
 const app = express();
 
-let count = 4;
-let adder = 0;
-let userId = 1;
 let day = date.getdate();
 
 // Setting up ejs
@@ -32,7 +29,6 @@ mongoose.connect("mongodb://localhost:27017/toDo_list", {
 mongoose.set("useFindAndModify", false); // Wrote this becoz of some deprection warnings.
 
 const dataSchema = new mongoose.Schema({
-  _id: Number,
   item: {
     type: String,
     required: [1, "The input field should not be blank"],
@@ -62,6 +58,20 @@ const item3 = new dailyData({
   item: "Type /urName in url for ur own list",
 });
 
+// Saving default data
+dailyData.find((err, data) => {
+  if (data.length == 0) {
+    dailyData.insertMany([item1, item2, item3], (err) => {
+      if (err) {
+        return;
+      } else {
+        console.log("Save successful");
+      }
+    });
+}
+});
+
+
 // Here both the requests are handled for the home route and the users route
 app.post("/list", function (req, res) {
   var listName = req.body.add;
@@ -69,7 +79,6 @@ app.post("/list", function (req, res) {
   if (listName != day) {
     // enters into users endpoints
     const newItem = {
-      _id: userId,
       item: req.body.point,
     };
 
@@ -91,7 +100,6 @@ app.post("/list", function (req, res) {
           (err) => {
             if (!err) {
               console.log(listName + ": Item added");
-              userId++;
             }
           }
         );
@@ -104,11 +112,9 @@ app.post("/list", function (req, res) {
   } else {
     // enters into default endpoints
     const newItem = new dailyData({
-      _id: count,
       item: req.body.point,
     });
     newItem.save();
-    count++;
     dailyData.find((err, data) => {
       if (!err) {
         console.log("New Point added");
@@ -120,14 +126,14 @@ app.post("/list", function (req, res) {
 
 // Deleting an item
 app.post("/del", (req, res) => {
-  var itemNo = req.body.checkBox;
+  var itemMsg = req.body.checkBox;
   var userName = req.body.listName;
 
   if (userName == day) {
     // enters into default endpoints for deletion
     dailyData.deleteOne(
       {
-        _id: itemNo,
+        item:itemMsg
       },
       (err) => {
         if (!err) {
@@ -135,15 +141,7 @@ app.post("/del", (req, res) => {
         }
       }
     );
-    dailyData.find((err, data) => {
-      if (data.length == 0) {
-        adder++;
-        res.redirect("/");
-      } else {
-        adder = 0;
-        res.redirect("/");
-      }
-    });
+    res.redirect("/");
   } else {
     // enters into users endpoints for deletion
     userData.findOneAndUpdate(
@@ -153,7 +151,7 @@ app.post("/del", (req, res) => {
       {
         $pull: {
           points: {
-            _id: itemNo,
+            item:itemMsg
           },
         },
       },
@@ -167,25 +165,14 @@ app.post("/del", (req, res) => {
   }
 });
 
+
 //  Normal List : localhost:5000
 app.get("/", (req, res) => {
-  // Updating the default data in the database if there no data
   dailyData.find((err, data) => {
-    if (data.length == 0 && adder == 0) {
-      dailyData.insertMany([item1, item2, item3], (err) => {
-        if (err) {
-          return;
-        } else {
-          console.log("Save successful");
-        }
-      });
-      res.redirect("/");
-    } else {
       res.render("ToDo", {
         title: day,
         newPoint: data,
       });
-    }
   });
 });
 
@@ -197,7 +184,6 @@ app.get("/:userName", (req, res) => {
     name: UserName,
     points: [
       {
-        _id: userId,
         item: "ToDo List",
       },
     ],
@@ -211,14 +197,12 @@ app.get("/:userName", (req, res) => {
       if (!err && !foundList && userName != "favicon.ico") {
         defaultObj.save();
         console.log(UserName + ": Default point created");
-        userId++;
         res.render("ToDo.ejs", {
           title: UserName,
           newPoint: defaultObj.points,
         });
       } else {
         if (userName != "favicon.ico") {
-          userId++;
           console.log(UserName + ": Default Point exists");
           userData.findOne(
             {
