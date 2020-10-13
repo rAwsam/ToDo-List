@@ -128,8 +128,8 @@ input[type="text"] {
 
 @media only screen and (max-width:480px) {
     .card {
-        width: 70%;
-        margin: 30% auto 3% auto;
+        width: 90%;
+        margin: 25% auto 3% auto;
     }
 
     .header {
