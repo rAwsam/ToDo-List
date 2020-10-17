@@ -1,8 +1,7 @@
 * This is a fully functional ToDo List app made using 
     * NodeJs 
     * Express 
-    * MongoDB
-    * Atlas
+    * MongoDB Atlas
 * Features:
     * Shows Present Day and Date
     * Auto-deletes to-dos once striked 
