@@ -10,7 +10,7 @@
     * Has a simple, nice and cool UI
     * You can add as many number of items as you want with no constraint, as the page is responsive and adds scroll effect as the list grows big!
 
-![Screenshots of how it works]SS-1.jpg
+![Screenshots of how it works](SS-1.jpg)
 ![Screenshots of how it works](SS-2.jpg)
 ![Screenshots of how it works](SS-3.jpg)
 
