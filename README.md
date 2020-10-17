@@ -10,10 +10,10 @@
     * Has a simple, nice and cool UI
     * You can add as many number of items as you want with no constraint, as the page is responsive and adds scroll effect as the list grows big!
 
-![Screenshots of how it works](SS-1.jpg)
+![Screenshots of how it works]SS-1.jpg
 ![Screenshots of how it works](SS-2.jpg)
 ![Screenshots of how it works](SS-3.jpg)
 
-<h4>Do have a look at <h3>this <a href="https://protected-beach-83429.herokuapp.com/"> awesome app</a></h3></h4>
+<h4>Do have a look at this <a href="https://protected-beach-83429.herokuapp.com/"> awesome app</a></h4>
 
 Developed by :<h4>@alphaCoder-69</h4>
