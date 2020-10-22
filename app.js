@@ -214,3 +214,7 @@ app.get("/:userName", (req, res) => {
 app.listen(5000, () => {
     console.log("Server is online at port 5000");
 });
+
+/*
+    Developed by @alphaCoderR
+*/
