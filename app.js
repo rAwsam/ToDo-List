@@ -216,5 +216,9 @@ app.listen(5000, () => {
 });
 
 /*
-    Developed by @alphaCoderR
+    	Coded by @alphaCoderR
+	Documentation by :
+		@rAwsam
+		@gracyashhh
+		@Aaron-Junker
 */
