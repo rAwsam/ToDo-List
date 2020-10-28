@@ -1,3 +1,7 @@
+<h1>ToDo List</h1>
+
+[![](https://img.shields.io/badge/Developed%20by-%40alphaCoder--69-blue)](https://github.com/alphaCoder-69)
+<h4>Do have a look at this <a href="https://protected-beach-83429.herokuapp.com/"> awesome app</a></h4>
 <p>This app can be a great use for reminding you the works you need to complete .Have problem in remembering ,then you are looking at the right site.Just list down your needs and there you are ,your nightmare of forgetting things gone forever as you can see it all in your screen.</p>
 
 * This is a fully functional ToDo List app made using 
@@ -20,6 +24,4 @@
 
 ![Screenshots of how it works](SS-3.jpg)
 
-<h4>Do have a look at this <a href="https://protected-beach-83429.herokuapp.com/"> awesome app</a></h4>
 
-[![](https://img.shields.io/badge/Developed%20by-%40alphaCoder--69-blue)](https://github.com/alphaCoder-69)
